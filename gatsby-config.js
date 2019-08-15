@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Logan Bussell`,
+    author: `Logan Bussell`,
+    description: `Logan Bussell's Personal Website`,
+    siteUrl: `https://loganbussell.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `lsbussell`,
     },
   },
   plugins: [
@@ -42,6 +42,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `my-gatsby-remark-formatter`,
         ],
       },
     },
@@ -57,8 +58,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Logan Bussell`,
+        short_name: `Logan`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -68,11 +69,5 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
   ],
 }

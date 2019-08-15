@@ -9,58 +9,66 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-import { rhythm } from "../utils/typography"
-
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      github: file(absolutePath: { regex: "/github.png/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 32, height: 32) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-      site {
-        siteMetadata {
-          author
-          social {
-            twitter
+      mail: file(absolutePath: { regex: "/mail.png/" }) {
+        childImageSharp {
+          fixed(width: 32, height: 32) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      />
-      <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a>
-      </p>
+    <div>
+      <div className="media mb-3">
+        <div className="media-body">
+          <h5 className="media-heading">About me</h5>
+          I'm a programmer, student, and musician studying computer science at
+          Georgia Tech. I like making keyboards, using Linux, and listening to
+          really technical music.
+        </div>
+      </div>
+      <hr />
+      <div className="media">
+        <Image
+          className="align-self-center mr-3 mb-3"
+          fixed={data.mail.childImageSharp.fixed}
+        />
+        <div className="media-body">
+          <a
+            style={{ textDecoration: "none", lineHeight: "32px" }}
+            href="mailto:lbussell3@gatech.edu"
+          >
+            Send me an email
+          </a>
+        </div>
+      </div>
+      <div className="media">
+        <Image
+          className="align-self-center mr-3"
+          fixed={data.github.childImageSharp.fixed}
+        />
+        <div className="media-body">
+          <a
+            style={{ textDecoration: "none", lineHeight: "32px" }}
+            href="https://github.com/lbussell/"
+          >
+            See me on Github
+          </a>
+        </div>
+      </div>
+      <hr />
     </div>
   )
 }
